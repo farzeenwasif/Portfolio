@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Farzeen Wasif | Portfolio",
   description:
-    "Farzeen’s portfolio showcasing modern, responsive, and visually polished web applications built with React, Next.js, GSAP, Framer Motion, and pixel-perfect UI design.",
+    "Farzeen’s portfolio showcasing responsive, and visually polished web applications built with React, Next.js, GSAP, Framer Motion, and pixel-perfect UI design.",
   applicationName: "Farzeens Portfolio",
   keywords: [
     "Farzeen Wasif",
