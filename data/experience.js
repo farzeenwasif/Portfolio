@@ -29,14 +29,14 @@ export const experience = [
   },
   {
     type: "education",
-    title: "Bachelor's Degree",
+    title: "BS Computer Science",
     org: "Virtual University of Pakistan",
     date: "Sep 2026 – Oct 2030",
     points: [],
   },
   {
     type: "education",
-    title: "C++ Programming",
+    title: "C++",
     org: "Cisco Networking Academy",
     date: "Oct 2026 – Nov 2026",
     points: [],
