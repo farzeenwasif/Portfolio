@@ -6,13 +6,13 @@ export default function HeroImage() {
   const ellipseRef = useRotatingAnimation();
 
   return (
-    <div className="relative overflow-hidden  w-[18.75rem] sm:w-[20rem] md:w-[25rem] max-w-[28rem] aspect-square">
+    <div className="relative shrink-0 overflow-hidden w-[16rem] sm:w-[20rem] md:w-[22rem] lg:w-[25rem] aspect-square">
       {/* Main Optimized Image */}
       <Image
         src="/user.png"
         alt="Portrait of Farzeen Wasif, frontend developer"
         fill
-        priority={false} // lazy-load since it's not critical
+        priority // main above-the-fold image
         sizes="(max-width: 768px) 100vw, 400px"
         className="absolute inset-0 object-contain rounded-full p-4 sm:p-6 md:p-6"
       />

@@ -1,11 +1,17 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function DesktopNav() {
+  const pathname = usePathname();
   const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
+    if (pathname !== "/") {
+      if (pathname.startsWith("/projects")) setActiveSection("project");
+      return;
+    }
     const sections = document.querySelectorAll("section[id]");
     const observer = new IntersectionObserver(
       (entries) => {
@@ -22,7 +28,7 @@ export default function DesktopNav() {
     sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   const links = [
     { id: "hero", label: "Home" },
@@ -37,7 +43,7 @@ export default function DesktopNav() {
       {links.map((link) => (
         <Link
           key={link.id}
-          href={`#${link.id}`}
+          href={`/#${link.id}`}
           className={`hover:scale-110 transition duration-300 ease-in-out ${
             activeSection === link.id ? "text-[#14827ec1]" : ""
           }`}

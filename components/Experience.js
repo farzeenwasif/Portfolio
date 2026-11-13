@@ -2,159 +2,129 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowUpRight, Briefcase, GraduationCap, MapPin } from "lucide-react";
 import TitleHeader from "./TitleHeader";
+import { experience } from "@/data/experience";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const expCards = [
-  {
-    logoPath: "/images/logo1.png",
-    title: "Frontend Developer",
-    date: "August 2024 - Present",
-    responsibilities: [
-      "Developed and maintained user-facing features for the Hostinger website.",
-      "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
-      "Optimized web applications for maximum speed and scalability.",
-    ],
-  },
-  {
-    logoPath: "/images/logo2.png",
-    title: "Full Stack Developer",
-    date: "December 2024 - July 2025",
-    responsibilities: [
-      "Led the development of Docker's web applications, focusing on scalability.",
-      "Worked to integrate APIs seamlessly with the frontend.",
-      "Contributed to open-source projects that were used with the Docker ecosystem.",
-    ],
-  },
-  {
-    logoPath: "/images/logo3.png",
-    title: "React Native Developer",
-    date: "August 2025 - Present",
-    responsibilities: [
-      "Built cross-platform mobile apps using React Native, integrating with Appwrite's backend services.",
-      "Improved app performance and user experience through code optimization and testing.",
-      "Coordinated with the product team to implement features based on feedback.",
-    ],
-  },
+const GROUPS = [
+  { type: "work", label: "Work" },
+  { type: "education", label: "Education & Certifications" },
 ];
 
 const Experience = () => {
   useGSAP(() => {
-    // Animate timeline cards
-    gsap.utils.toArray(".timeline-card").forEach((card) => {
-      gsap.from(card, {
-        xPercent: -100,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: card,
-          start: "top 80%",
-        },
-      });
-    });
-
-    // Animate timeline shrink
-    gsap.to(".timeline", {
-      transformOrigin: "bottom bottom",
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: ".timeline",
-        start: "top center",
-        end: "70% center",
-        onUpdate: (self) => {
-          gsap.to(".timeline", {
-            scaleY: 1 - self.progress,
-            overwrite: "auto",
-          });
-        },
-      },
-    });
-
-    // Animate text inside cards
-    gsap.utils.toArray(".expText").forEach((text) => {
-      gsap.from(text, {
-        opacity: 0,
-        xPercent: -20,
-        duration: 1,
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: text,
-          start: "top 70%",
-        },
-      });
+    gsap.utils.toArray(".timeline-item").forEach((item) => {
+      gsap.fromTo(
+        item,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: { trigger: item, start: "top 85%" },
+        }
+      );
     });
   }, []);
 
   return (
     <section
       id="experience"
-      className="relative flex justify-center mt-20 md:mt-40 px-5 pt-10 md:px-10 xl:px-0"
+      className="relative w-full px-5 md:px-10 py-16 md:py-24"
       aria-labelledby="experience-title"
     >
-      <div className="w-full h-full md:px-20 px-5">
-        {/* Section Title */}
+      <div className="max-w-4xl mx-auto flex flex-col gap-12 md:gap-16">
         <TitleHeader
           id="experience-title"
-          title="Professional Work Experience"
-          sub="💼 My Career Overview"
-          as="h2"
-          className="text-3xl md:text-4xl font-bold"
+          title="Experience & Education"
+          sub="💼 My Journey"
         />
 
-        <div className="flex justify-center w-full h-full z-10">
-          <div className="mt-32 pt-10 relative">
-            <div className="relative z-30 xl:space-y-32 space-y-10">
-              {expCards.map((card) => (
-                <article
-                  key={card.title}
-                  className="timeline-card flex flex-col-reverse xl:flex-row xl:gap-20 gap-10 justify-center"
-                >
-                  <div className="xl:w-4/6">
-                    <div className="flex items-start">
-                      {/* Timeline line */}
-                      <div className="absolute top-0 xl:left-[14rem] md:left-[2.2vw] left-5 h-full flex justify-center">
-                        <div className="timeline absolute z-30 h-[110%] -top-10 w-14 md:w-28" />
-                        <div className="w-[2px] h-full bg-[linear-gradient(0deg,rgba(69,222,196,0)_0%,#62e0ff_25%,#52aeff_37.51%,#fd5c79_62.83%,#6d45ce_92.91%)]" />
+        {GROUPS.map(({ type, label }) => {
+          const items = experience.filter((e) => e.type === type);
+          if (!items.length) return null;
+          return (
+            <div key={type} className="flex flex-col gap-6 md:gap-8">
+              <p className="font-mono text-sm uppercase tracking-[0.25em] text-[#5fc4bf]">
+                {label}
+              </p>
+            <ol className="relative flex flex-col gap-8 md:gap-10">
+              {/* vertical line */}
+              <div
+                aria-hidden="true"
+                className="absolute left-5 md:left-6 top-2 bottom-2 w-[2px] bg-[linear-gradient(180deg,#62e0ff_0%,#52aeff_35%,#fd5c79_70%,#6d45ce_100%)] opacity-60"
+              />
+
+              {items.map((item) => {
+                const Icon = item.type === "work" ? Briefcase : GraduationCap;
+                return (
+                  <li
+                    key={`${item.title}-${item.org}`}
+                    className="timeline-item relative flex gap-5 md:gap-8"
+                  >
+                    <div className="relative z-10 flex size-10 md:size-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#0f1115] text-[#5fc4bf]">
+                      <Icon className="size-5" aria-hidden="true" />
+                    </div>
+
+                    <article className="flex-1 flex flex-col gap-3 rounded-2xl border border-white/15 bg-white/[0.04] backdrop-blur-lg p-5 md:p-7">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                        <div className="flex flex-col gap-1">
+                          <h3 className="text-xl md:text-2xl font-semibold text-white">
+                            {item.title}
+                          </h3>
+                          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[#5fc4bf] font-medium">
+                            {item.link ? (
+                              <a
+                                href={item.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 hover:underline underline-offset-4"
+                              >
+                                {item.org}
+                                <ArrowUpRight className="size-4" aria-hidden="true" />
+                              </a>
+                            ) : (
+                              item.org
+                            )}
+                            {item.employment && (
+                              <span className="font-mono text-[11px] uppercase tracking-wider text-white/70 bg-[#14827e]/15 border border-[#14827e]/40 rounded-full px-2 py-0.5">
+                                {item.employment}
+                              </span>
+                            )}
+                          </p>
+                        </div>
+                        {item.date && (
+                          <span className="self-start shrink-0 font-mono text-xs md:text-sm text-white/70 bg-white/5 border border-white/10 rounded-full px-3 py-1">
+                            {item.date}
+                          </span>
+                        )}
                       </div>
 
-                      {/* Experience Text */}
-                      <div className="expText flex xl:gap-25 md:gap-10 gap-5 relative z-20">
-                        <div className="md:size-15 p-3 size-10 flex-none rounded-full flex justify-center items-center md:-translate-y-6 border border-black/50 bg-black/80">
-                          <img
-                            src={card.logoPath}
-                            alt={`${card.title} company logo`}
-                            className="max-w-full max-h-full object-contain"
-                          />
-                        </div>
-                        <div>
-                          {/* Job Title (updated h3 -> h2) */}
-                          <h2 className="font-semibold text-white text-2xl md:text-3xl">
-                            {card.title}
-                          </h2>
-                          <p className="my-5 text-white/50 text-base md:text-lg">
-                            🗓️&nbsp;{card.date}
-                          </p>
-                          <p className="text-[#14827ec1] italic text-base md:text-lg">
-                            Responsibilities
-                          </p>
-                          <ul className="list-disc ms-5 mt-5 flex flex-col gap-5 text-white/70">
-                            {card.responsibilities.map((responsibility, index) => (
-                              <li key={index} className="text-lg md:text-xl">
-                                {responsibility}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              ))}
+                      {item.location && (
+                        <p className="flex items-center gap-1.5 text-sm text-white/50">
+                          <MapPin className="size-4" aria-hidden="true" />
+                          {item.location}
+                        </p>
+                      )}
+
+                      {item.points?.length > 0 && (
+                        <ul className="list-disc pl-5 flex flex-col gap-2 text-white/75 text-base md:text-lg leading-relaxed">
+                          {item.points.map((point) => (
+                            <li key={point}>{point}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </article>
+                  </li>
+                );
+              })}
+            </ol>
             </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
     </section>
   );

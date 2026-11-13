@@ -1,14 +1,17 @@
-const TitleHeader = ({ title, sub }) => {
+const TitleHeader = ({ title, sub, id }) => {
   return (
-    <div className="flex flex-col items-center gap-5">
-      <div className="bg-neutral-800 py-2 px-4 rounded-full w-fit text-white text-sm md:text-base whitespace-nowrap">
-        <p>{sub}</p>
-      </div>
-      <div>
-        <p className="font-semibold text-5xl md:text-6xl text-white text-center">
-          {title}
+    <div className="flex flex-col items-center gap-4 text-center">
+      {sub && (
+        <p className="bg-neutral-800/90 py-2 px-4 rounded-full w-fit text-white text-sm md:text-base">
+          {sub}
         </p>
-      </div>
+      )}
+      <h2
+        id={id}
+        className="font-bold text-3xl sm:text-4xl md:text-5xl text-white text-balance"
+      >
+        {title}
+      </h2>
     </div>
   );
 };

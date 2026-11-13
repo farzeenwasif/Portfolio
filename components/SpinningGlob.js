@@ -122,7 +122,7 @@ function GlobeCanvasWrapper() {
 
   return (
     <section
-      className="cursor-grab relative w-full flex flex-col items-center gap-6"
+      className="cursor-grab relative w-full flex flex-col items-center gap-8 px-5 md:px-10 py-16 md:py-24"
       aria-labelledby="tech-stack-heading"
     >
       {/* Section Heading */}

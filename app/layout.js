@@ -94,7 +94,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
         {/* ✅ Manifest for PWA + branding */}
         <link rel="manifest" href="/manifest.json" />
@@ -109,20 +109,18 @@ __html: JSON.stringify({
   mainEntity: {
     "@type": "Person",
     name: "Farzeen Wasif",
-    jobTitle: "Full Stack Developer",
+    jobTitle: "Full Stack Web & Mobile App Developer",
     url: "https://farzeensportfolio.vercel.app/",
     sameAs: [
-      "https://github.com/Farzeensiddiquie",
-      "https://www.linkedin.com/in/farzeen-wasif"
+      "https://github.com/farzeenwasif",
+      "https://www.linkedin.com/in/farzeen-wasif/"
     ]
   }
 })
 }}
 />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         {children}
         <SpeedInsights />
       </body>

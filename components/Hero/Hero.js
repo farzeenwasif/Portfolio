@@ -19,20 +19,20 @@ export default function Hero() {
       id="hero"
       role="banner"
       aria-label="Introduction and main call to action"
-      className="min-h-screen w-full text-white relative overflow-hidden"
+      className="w-full text-white relative overflow-hidden"
     >
       <motion.div
         initial={shouldReduceMotion ? false : { opacity: 0 }}
         animate={shouldReduceMotion ? {} : { opacity: 1 }}
         transition={{ duration: 1 }}
-        className="hero-margin flex flex-col-reverse md:flex-row items-center justify-around gap-10 py-15 md:h-[75vh] mx-auto"
+        className="relative max-w-7xl mx-auto px-5 md:px-10 pt-28 md:pt-32 pb-16 md:min-h-screen flex flex-col-reverse md:flex-row items-center justify-center md:justify-between gap-10 md:gap-16"
       >
         {/* LEFT: TEXT */}
         <motion.div
           initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
           animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="gap-10 w-full max-w-[480px] md:items-start text-center md:text-left"
+          className="w-full max-w-xl"
         >
           <HeroText showButtons={showButtons} />
         </motion.div>

@@ -64,19 +64,19 @@ export default function StatsSection() {
     <div
       id="counter"
       ref={counterRef}
-      className="px-6 pb-15 flex justify-center sm:px-12 xl:mt-0 mt-32"
+      className="relative px-5 md:px-10 py-8 md:py-12 flex justify-center"
     >
-      <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-8xl">
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {counterItems.map((item, index) => (
           <div
             key={index}
             ref={(el) => el && (countersRef.current[index] = el)}
-            className="bg-gray/5 min-w-[18vw] backdrop-blur-lg border border-white/20 rounded-lg p-10 flex flex-col justify-center items-center text-center"
+            className="bg-white/[0.04] backdrop-blur-lg border border-white/15 rounded-2xl p-5 md:p-8 flex flex-col justify-center items-center gap-2 text-center"
           >
-            <div className="counter-number text-white text-5xl font-bold mb-2">
+            <div className="counter-number font-mono text-white text-3xl md:text-5xl font-bold">
               0 {item.suffix}
             </div>
-            <div className="text-white/70 text-lg">{item.label}</div>
+            <div className="text-white/70 text-sm md:text-base">{item.label}</div>
           </div>
         ))}
       </div>

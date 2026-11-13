@@ -9,11 +9,11 @@ export default function MobileMenu({ menuOpen, setMenuOpen }) {
       }`}
     >
       <div className="flex  flex-col items-center justify-center h-full gap-8 pt-20 text-white">
-        <Link onClick={() => setMenuOpen(false)} href="#hero">Home</Link>
-        <Link onClick={() => setMenuOpen(false)} href="#project">Projects</Link>
-        <Link onClick={() => setMenuOpen(false)} href="#about">About</Link>
-        <Link onClick={() => setMenuOpen(false)} href="#experience">Experience</Link>
-        <Link onClick={() => setMenuOpen(false)} href="#contact">Contact</Link>
+        <Link onClick={() => setMenuOpen(false)} href="/#hero">Home</Link>
+        <Link onClick={() => setMenuOpen(false)} href="/#project">Projects</Link>
+        <Link onClick={() => setMenuOpen(false)} href="/#about">About</Link>
+        <Link onClick={() => setMenuOpen(false)} href="/#experience">Experience</Link>
+        <Link onClick={() => setMenuOpen(false)} href="/#contact">Contact</Link>
       </div>
     </div>
   );
