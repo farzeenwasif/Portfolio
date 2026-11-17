@@ -16,13 +16,15 @@ export default function HeroText({ showButtons }) {
       >
         <p className="font-mono text-sm md:text-base text-gray-400">Hi, I am</p>
 
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-          Farzeen <span className="text-[#14827ec1]">Wasif</span>
+        {/* Name + role in one h1 so search engines read "Farzeen Wasif, Freelance Full Stack Developer" */}
+        <h1 className="flex flex-col items-center md:items-start gap-3">
+          <span className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+            Farzeen <span className="text-[#14827ec1]">Wasif</span>
+          </span>
+          <span className="font-mono font-normal text-sm sm:text-base text-[#5fc4bf] tracking-wide">
+            Freelance Full Stack Web &amp; Mobile App Developer
+          </span>
         </h1>
-
-        <p className="font-mono text-sm sm:text-base text-[#5fc4bf] tracking-wide">
-          Full Stack Web &amp; Mobile App Developer
-        </p>
       </motion.div>
 
       {/* Typewriter value statement */}

@@ -2,19 +2,56 @@ import Link from "next/link";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import ProjectGrid from "@/components/project/ProjectGrid";
+import { projects } from "@/data/projects";
+
+const PAGE_URL = "https://farzeensportfolio.vercel.app/projects";
+const DESCRIPTION =
+  "Freelance web development projects by Farzeen Wasif: full stack SaaS apps, landing pages, agency websites, portfolios and dashboards built with React, Next.js, Node.js and Tailwind CSS.";
 
 export const metadata = {
-  title: "Projects | Farzeen Wasif",
-  description:
-    "All projects by Farzeen Wasif — landing pages, agency sites, portfolios and dashboards built with React, Next.js and Tailwind CSS.",
-  alternates: {
-    canonical: "https://farzeensportfolio.vercel.app/projects",
+  title: "Projects: Freelance Web Development Work",
+  description: DESCRIPTION,
+  alternates: { canonical: "/projects" },
+  openGraph: {
+    url: PAGE_URL,
+    title: "Projects by Farzeen Wasif, Freelance Full Stack Developer",
+    description: DESCRIPTION,
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Farzeen Wasif projects" }],
+  },
+};
+
+// Lists each project as a piece of creative work by Farzeen Wasif.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  url: PAGE_URL,
+  name: "Projects by Farzeen Wasif",
+  description: DESCRIPTION,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: projects.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "CreativeWork",
+        name: p.title,
+        description: p.description,
+        url: p.link,
+        image: `https://farzeensportfolio.vercel.app${p.image}`,
+        keywords: p.stack.join(", "),
+        creator: { "@id": "https://farzeensportfolio.vercel.app/#person" },
+      },
+    })),
   },
 };
 
 export default function ProjectsPage() {
   return (
     <div className="bg min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
       <main className="relative w-full max-w-7xl mx-auto px-5 md:px-10 pt-32 md:pt-40 pb-16 md:pb-24">
         <div className="pb-8">
@@ -31,8 +68,8 @@ export default function ProjectsPage() {
             All Projects
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto text-[15px] md:text-base">
-            A collection of websites, landing pages and dashboards I&apos;ve
-            designed and built.
+            Freelance and personal projects I&apos;ve designed and built: full
+            stack SaaS apps, landing pages, agency websites and dashboards.
           </p>
         </header>
 

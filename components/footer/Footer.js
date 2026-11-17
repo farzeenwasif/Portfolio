@@ -2,11 +2,11 @@ import { Github } from "lucide-react";
 
 const Footer = () => {
   const socialImgs = [
-    { name: "insta", imgPath: "/images/social-1.png",link: "https://www.instagram.com/farzeen_wasif/" },
-    { name: "fb", imgPath: "/images/fb.png",link: "https://www.facebook.com/profile.php?id=61563782512766" },
-    { name: "x", imgPath: "/images/x.png",link: "https://x.com/Farzeen3284" },
-    { name: "linkedin", imgPath: "/images/linkedin.png", link: "https://www.linkedin.com/in/farzeen-wasif/" },
-    { name: "github", Icon: Github, link: "https://github.com/farzeenwasif" },
+    { name: "Instagram", imgPath: "/images/social-1.png",link: "https://www.instagram.com/farzeen_wasif/" },
+    { name: "Facebook", imgPath: "/images/fb.png",link: "https://www.facebook.com/profile.php?id=61563782512766" },
+    { name: "X (Twitter)", imgPath: "/images/x.png",link: "https://x.com/Farzeen3284" },
+    { name: "LinkedIn", imgPath: "/images/linkedin.png", link: "https://www.linkedin.com/in/farzeen-wasif/" },
+    { name: "GitHub", Icon: Github, link: "https://github.com/farzeenwasif" },
   ];
 
   return (
@@ -29,7 +29,7 @@ const Footer = () => {
               <a
                 key={index}
               href={socialImg.link}
-              aria-label={`${socialImg.name} profile`}
+              aria-label={`Farzeen Wasif on ${socialImg.name}`}
               target="_blank"
               rel="noopener noreferrer">
               {socialImg.Icon ? (
@@ -38,7 +38,10 @@ const Footer = () => {
                 <img
                   className="inline-block w-5 h-5 object-contain"
                   src={socialImg.imgPath}
-                  alt=""
+                  alt={`${socialImg.name} logo`}
+                  width={20}
+                  height={20}
+                  loading="lazy"
                 />
               )}
               </a>

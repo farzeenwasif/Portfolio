@@ -2,8 +2,9 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { projects } from "@/data/projects";
+import { projects, projectImageAlt } from "@/data/projects";
 import TiltCard from "./TiltCard";
+import ProjectLinks from "./ProjectLinks";
 import BrowserFrame from "./BrowserFrame";
 import StackList from "./StackList";
 
@@ -36,7 +37,7 @@ export default function ProjectGrid() {
           >
             <BrowserFrame
               src={project.image}
-              alt={project.title}
+              alt={projectImageAlt(project)}
               link={project.link}
               priority={index < 2}
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -61,19 +62,8 @@ export default function ProjectGrid() {
                 {project.description}
               </p>
               <StackList stack={project.stack} className="pt-1" />
-              <div className="pt-3">
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group/btn inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white/20 bg-white/5 text-white font-semibold transition-all duration-300 hover:bg-[#14827e] hover:border-[#14827e]"
-              >
-                {project.linkLabel || "View Project"}
-                <span className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">&#8599;</span>
-              </a>
-              {project.status && (
-                <p className="text-xs text-white/50 pt-2">{project.status}</p>
-              )}
+              <div className="pt-1">
+                <ProjectLinks project={project} />
               </div>
             </div>
           </article>

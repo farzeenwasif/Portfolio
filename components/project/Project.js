@@ -4,8 +4,9 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { projects as allProjects, FEATURED_COUNT } from "@/data/projects";
+import { projects as allProjects, FEATURED_COUNT, projectImageAlt } from "@/data/projects";
 import TiltCard from "./TiltCard";
+import ProjectLinks from "./ProjectLinks";
 import BrowserFrame from "./BrowserFrame";
 import StackList from "./StackList";
 
@@ -138,29 +139,14 @@ const ProjectShowcase = () => {
 
                     <StackList stack={project.stack} />
 
-                    <div className="pt-2">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white/20 bg-white/5 text-white font-semibold transition-all duration-300 hover:bg-[#14827e] hover:border-[#14827e]"
-                    >
-                      {project.linkLabel || "View Project"}
-                      <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                        &#8599;
-                      </span>
-                    </a>
-                    {project.status && (
-                      <p className="text-xs text-white/50 pt-2">{project.status}</p>
-                    )}
-                    </div>
+                    <ProjectLinks project={project} />
                   </div>
 
                   {/* Visual */}
                   <TiltCard className="rounded-xl">
                     <BrowserFrame
                       src={project.image}
-                      alt={project.title}
+                      alt={projectImageAlt(project)}
                       link={project.link}
                       priority={index === 0}
                       sizes="(max-width: 768px) 100vw, 55vw"

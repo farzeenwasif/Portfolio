@@ -1,9 +1,27 @@
 // Single source of truth for all projects.
 // The home page shows the first FEATURED_COUNT; /projects shows them all.
-// Optional fields: linkLabel (button text, default "View Project"), status (small note under the button).
+// Optional fields: linkLabel (button text, default "View Project"), repo (adds a "View Code" button),
+// imageAlt (describes the screenshot for SEO/screen readers), status (small note under the button).
 export const FEATURED_COUNT = 3;
 
+// Descriptive alt text for a project's screenshot (good for SEO and screen readers).
+export const projectImageAlt = (p) =>
+  p.imageAlt || `Screenshot of ${p.title} (${p.tag}), built by Farzeen Wasif`;
+
 export const projects = [
+  {
+    tag: "Full Stack SaaS",
+    title: "Tasklytic — AI Task & Finance Dashboard",
+    description:
+      "Tasklytic is a full-stack SaaS app that turns a one-line note, a voice message or a photo into tasks, plans your day around them, and tracks hours, bills, budgets and freelance invoices in one place. It includes JWT authentication, a dashboard with charts and an activity log, a Premium plan with Paddle subscriptions, and AI features such as subtask breakdowns and weekly insights, built on a REST API with Express and MongoDB.",
+    image: "/tasklytic.png",
+    imageAlt:
+      "Tasklytic landing page: 'Get it out of your head. Get it done.' hero with a 3D bar chart and a task dashboard preview",
+    link: "https://tasklytic-blue.vercel.app/",
+    linkLabel: "Live Demo",
+    repo: "https://github.com/farzeenwasif/Tasklytic",
+    stack: ["React", "Vite", "Tailwind CSS", "Three.js", "Node.js", "Express", "MongoDB", "JWT", "Paddle", "Cloudinary"],
+  },
   {
     tag: "SaaS Landing Page",
     title: "LeaFlow — Online Accounting",
@@ -30,16 +48,5 @@ export const projects = [
     image: "/projectv2.png",
     link: "https://richardhanrickportfolio.vercel.app",
     stack: ["React", "Vite", "CSS3"],
-  },
-  {
-    tag: "Dashboard",
-    title: "Task Management Admin Dashboard",
-    description:
-      "A full-stack Task Management Admin Dashboard that lets administrators create, prioritise and track tasks from one place. Includes secure JWT authentication, task status and priority management, image uploads, and a RESTful Express API backed by MongoDB.",
-    image: "/projectv3.png",
-    link: "https://github.com/Farzeenwasif/admin-dashboard",
-    linkLabel: "View Code",
-    status: "Live demo coming soon",
-    stack: ["React", "Vite", "Tailwind CSS", "Material UI", "Node.js", "Express", "MongoDB", "JWT", "Cloudinary"],
   },
 ];

@@ -30,7 +30,7 @@ const FeatureCards = () => (
           className="border border-white/10 bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 flex flex-col gap-4 hover:border-white/30 transition-colors duration-300"
         >
           <div className="size-14 flex items-center justify-center rounded-full bg-white/5">
-            <img src={imgPath} alt={title} className="w-8 h-8 object-contain" />
+            <img src={imgPath} alt={`${title} icon`} width={32} height={32} loading="lazy" className="w-8 h-8 object-contain" />
           </div>
           <h3 className="text-white text-xl md:text-2xl font-semibold">{title}</h3>
           <p className="text-white/70 text-base leading-relaxed">{desc}</p>

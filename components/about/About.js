@@ -27,8 +27,9 @@ export default function About() {
           </h2>
 
           <p className="text-gray-200 text-lg md:text-xl leading-relaxed">
-            Hi! I&apos;m Farzeen — an application developer passionate about
-            building beautiful, high-performance apps.
+            Hi! I&apos;m Farzeen — a freelance full stack developer from
+            Faisalabad, Pakistan, building beautiful, high-performance web and
+            mobile apps for clients worldwide.
           </p>
 
           <p className="text-gray-400 text-base md:text-lg leading-relaxed">
@@ -44,6 +45,13 @@ export default function About() {
             React Native and Expo Go, and design interfaces using tools like
             Figma. Additionally, I can create beautiful and functional desktop
             applications with Electron.js.
+          </p>
+
+          <p className="text-gray-400 text-base md:text-lg leading-relaxed">
+            Looking to hire a React, Next.js or React Native developer? I&apos;m
+            available for freelance projects and remote contract work, from
+            landing pages and SaaS dashboards to full stack apps with Node.js,
+            Express and MongoDB.
           </p>
         </motion.div>
 

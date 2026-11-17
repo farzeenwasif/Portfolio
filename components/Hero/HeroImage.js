@@ -10,7 +10,7 @@ export default function HeroImage() {
       {/* Main Optimized Image */}
       <Image
         src="/user.png"
-        alt="Portrait of Farzeen Wasif, frontend developer"
+        alt="Portrait of Farzeen Wasif, freelance full stack web and mobile app developer"
         fill
         priority // main above-the-fold image
         sizes="(max-width: 768px) 100vw, 400px"
